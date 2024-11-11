@@ -2,6 +2,7 @@ from flask import Flask, request
 from extensions import db,migrate
 import importlib
 from api.views import blueprint
+from extensions import ma
 #from flask_sqlalchemy import SQLAlchemy
 app =Flask(__name__)
 app.config.from_object('config')
@@ -9,6 +10,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] =  'mysql+pymysql://root:NsINFINITY6617@lo
 app.register_blueprint(blueprint=blueprint)
 db.init_app(app)
 migrate.init_app(app,db)
+ma.init_app(app)
 
 
 
